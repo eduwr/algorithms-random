@@ -1,4 +1,11 @@
 class Traverser {
+  /**
+ * Perform an in-order traversal of a binary tree iteratively.
+ *  In this traversal, you visit the left subtree, then the current node, and finally the right subtree, in that order.
+ *
+ * @param {TreeNode | null} tree - The root node of the binary tree.
+ * @returns {number[]} - An array containing the elements of the binary tree in in-order traversal.
+ */
   static inorderTraversalIteractive(tree: TreeNode | null): number[] {
     const result: number[] = [];
     const stack: TreeNode[] = [];
@@ -36,6 +43,13 @@ class Traverser {
     return result;
   }
 
+  /**
+ * Perform an in-order traversal of a binary tree recursively.
+ *  In this traversal, you visit the left subtree, then the current node, and finally the right subtree, in that order.
+ *
+ * @param {TreeNode} tree - The root node of the binary tree.
+ * @returns {number[]} - An array containing the elements of the binary tree in in-order traversal.
+ */
   static inorderTraversalRecursive(tree: TreeNode): number[] {
     const result: number[] = [];
     if (!!tree.left) {
@@ -51,6 +65,13 @@ class Traverser {
     return result;
   }
 
+  /**
+ * Perform a pre-order traversal of a binary tree iteratively.
+ * In this traversal, you visit the current node first, followed by the left subtree, and then the right subtree.
+ *
+ * @param {TreeNode | null} tree - The root node of the binary tree.
+ * @returns {number[]} - An array containing the elements of the binary tree in pre-order traversal.
+ */
   static preorderTraversalInteractive(tree: TreeNode | null | undefined) {
     const result: number[] = [];
     const stack: TreeNode[] = [];
@@ -81,6 +102,13 @@ class Traverser {
     // Output: 1 2 4 5 3 6 7
   }
 
+  /**
+ * Perform a pre-order traversal of a binary tree recursively.
+ * In this traversal, you visit the current node first, followed by the left subtree, and then the right subtree.
+ *
+ * @param {TreeNode | null} tree - The root node of the binary tree.
+ * @returns {number[]} - An array containing the elements of the binary tree in pre-order traversal.
+ */
   static preorderTraversalRecursive(tree: TreeNode | null | undefined) {
     const result: number[] = [];
  
@@ -107,12 +135,26 @@ class Traverser {
     // Output: 1 2 4 5 3 6 7
   }
 
+  /**
+ * Perform a post-order traversal of a binary tree.
+ * In this traversal, you visit the left subtree, the right subtree, and finally the current node.
+ *
+ * @param {TreeNode} tree - The root node of the binary tree.
+ * @returns {number[]} - An array containing the elements of the binary tree in post-order traversal.
+ */
   static postorderTraversal(tree: TreeNode) {
     const result: number[] = [];
 
     result.push(tree.value);
 
     return result;
+  // Output: 4 5 2 6 7 3 1
+  //        1
+  //       / \
+  //      2   3
+  //     /\   /\
+  //    4  5 6  7
+  //
   }
 }
 
