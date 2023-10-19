@@ -51,7 +51,63 @@ class Traverser {
     return result;
   }
 
-  static preorderTraversal(tree: TreeNode) {
+  static preorderTraversalInteractive(tree: TreeNode | null | undefined) {
+    const result: number[] = [];
+    const stack: TreeNode[] = [];
+    let current = tree;
+
+    while (current || stack.length > 0) {
+      if (current) result.push(current.value);
+
+      if (current?.right) {
+        stack.push(current.right);
+      }
+
+      if (current?.left) {
+        current = current.left;
+      } else {
+        current = stack.pop();
+      }
+    }
+
+    return result;
+
+    //        1
+    //       / \
+    //      2   3
+    //     /\   /\
+    //    4  5 6  7
+
+    // Output: 1 2 4 5 3 6 7
+  }
+
+  static preorderTraversalRecursive(tree: TreeNode | null | undefined) {
+    const result: number[] = [];
+ 
+    if (tree) {
+      result.push(tree.value)
+    }
+ 
+    if(tree?.left) {
+      result.push(...this.preorderTraversalRecursive(tree.left))
+    }
+    
+    if(tree?.right) {
+      result.push(...this.preorderTraversalRecursive(tree.right))
+    }
+
+    return result;
+
+    //        1
+    //       / \
+    //      2   3
+    //     /\   /\
+    //    4  5 6  7
+
+    // Output: 1 2 4 5 3 6 7
+  }
+
+  static postorderTraversal(tree: TreeNode) {
     const result: number[] = [];
 
     result.push(tree.value);
@@ -91,6 +147,10 @@ function main() {
     "Inorder Traversal Interactive: ",
     Traverser.inorderTraversalIteractive(root)
   );
+
+  console.log("Preorder Traversal: ", Traverser.preorderTraversalInteractive(root)); // Output: 1 2 4 5 3 6 7
+  console.log("Preorder Traversal Recursive: ", Traverser.preorderTraversalRecursive(root)); // Output: 1 2 4 5 3 6 7
+  console.log("Postorder Traversal: ", Traverser.postorderTraversal(root)); // Output: 4 5 2 6 7 3 1
 }
 
 main();
